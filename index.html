@@ -76,7 +76,8 @@
   <iframe id="player"
     src=""
     allow="autoplay; encrypted-media"
-    allowfullscreen>
+    allowfullscreen
+    playsinline>
   </iframe>
 
   <button id="nextBtn" onclick="location.href='gratitude.html'">next</button>
@@ -87,9 +88,9 @@
     const nextBtn = document.getElementById('nextBtn');
 
     startBtn.addEventListener('click', () => {
-      // Set YouTube embed URL with autoplay and unmute
       const videoId = 'CJWjPz8Sdaw';
-      const autoplayURL = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&rel=0&controls=0&modestbranding=1`;
+      // mute=1 + playsinline=1 for mobile autoplay support
+      const autoplayURL = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&controls=0&modestbranding=1&playsinline=1`;
 
       player.src = autoplayURL;
       player.style.display = 'block';
