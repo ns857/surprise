@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🌟 A Special Gratitude & Motivation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #fffaf0;
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 30px;
+      text-align: center;
+      color: #b15989;
+      position: relative;
+      overflow: hidden;
+    }
+    #letter {
+      background: #fdf0f7;
+      border-radius: 30px;
+      padding: 40px 50px;
+      max-width: 600px;
+      box-shadow: 0 10px 25px rgba(177, 89, 137, 0.3);
+      font-size: 1.6em;
+      line-height: 1.5;
+      color: #8b496b;
+      user-select: none;
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.8em;
+      margin-bottom: 0.3em;
+      color: #d95f8f;
+    }
+    p {
+      margin-bottom: 1.3em;
+    }
+    button {
+      margin-top: 40px;
+      background: #ff69b4;
+      border: none;
+      padding: 15px 35px;
+      border-radius: 40px;
+      color: white;
+      font-size: 1.2em;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(255, 105, 180, 0.5);
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background: #d9417b;
+    }
+    /* Magic particles */
+    #magicParticles {
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      overflow: visible;
+      z-index: 9999;
+    }
+    .particle {
+      position: absolute;
+      opacity: 0.8;
+      animation-timing-function: linear;
+      user-select: none;
+    }
+    .sparkle {
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, white 40%, transparent 80%);
+      border-radius: 50%;
+      filter: drop-shadow(0 0 2px #fff);
+      animation-name: sparkle-float;
+      animation-duration: 6s;
+    }
+    .heart {
+      width: 16px;
+      height: 16px;
+      background: #ff69b4;
+      clip-path: polygon(
+        50% 0%, 61% 10%, 70% 20%, 80% 35%, 
+        80% 55%, 65% 70%, 50% 80%, 35% 70%, 
+        20% 55%, 20% 35%, 30% 20%, 39% 10%
+      );
+      animation-name: heart-float;
+      animation-duration: 7s;
+    }
+    @keyframes sparkle-float {
+      0%   { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+    }
+    @keyframes heart-float {
+      0%   { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(-130vh) scale(1.1) rotate(360deg); opacity: 0; }
+    }
+    /* Music toggle button */
+    #musicToggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(177, 89, 137, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26px;
+      color: #b15989;
+      user-select: none;
+      z-index: 10000;
+      transition: background-color 0.3s ease;
+    }
+    #musicToggle:hover {
+      background: rgba(255, 255, 255, 1);
+    }
+  </style>
+</head>
+<body>
+  <div id="letter">
+    <h1>Dear Bestfriend,</h1>
+<p>Happy Birthday! I hope today reminds you of how much light you bring into the lives around you — not in loud ways, but in quiet strength, steady kindness, and genuine presence.</p>
+
+<p>Like Totoro in the trees or Ponyo on the waves, you move through the world with a kind of quiet magic — honest, curious, and full of heart. You've handled so much with grace, and I admire that more than words can say.</p>
+
+<p>This year, I hope you keep choosing what feels true. Keep growing at your own pace, resting when you need, and trusting the path ahead — even when it’s unclear.  
+I’m lucky to walk alongside you in this life. Here’s to the simple joys, the deep breaths, and the moments that feel like home. 🌿🌊</p>
+
+    <button onclick="location.href='totoro.html'">next 🌟</button>
+  </div>
+
+  <div id="magicParticles"></div>
+
+  <audio id="bgMusic" loop preload="auto" style="display:none">
+    <source src="manchild.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <div id="musicToggle" title="Toggle Music">🔈</div>
+
+  <script>
+    const container = document.getElementById('magicParticles');
+    function random(min, max) {return Math.random() * (max - min) + min;}
+    function createParticle(type) {
+      const el = document.createElement('div');
+      el.classList.add('particle', type);
+      el.style.left = random(0, 100) + 'vw';
+      el.style.top = '110vh';
+      el.style.animationDuration = random(5, 9) + 's';
+      el.style.opacity = random(0.6, 1);
+      container.appendChild(el);
+      el.addEventListener('animationend', () => {
+        container.removeChild(el);
+      });
+    }
+    setInterval(() => {
+      createParticle('sparkle');
+      if (Math.random() > 0.5) createParticle('heart');
+    }, 400);
+
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+
+    // Restore music state and time from localStorage
+    let musicPlaying = JSON.parse(localStorage.getItem('musicPlaying')) ?? true;
+    let musicTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+
+    bgMusic.currentTime = musicTime;
+
+    function updateToggleIcon() {
+      musicToggle.textContent = musicPlaying ? '🔊' : '🔈';
+    }
+
+    async function tryPlayMusic() {
+      try {
+        await bgMusic.play();
+        musicPlaying = true;
+        updateToggleIcon();
+        localStorage.setItem('musicPlaying', true);
+      } catch {
+        // autoplay failed, wait for user interaction or toggle
+        musicPlaying = false;
+        updateToggleIcon();
+      }
+    }
+
+    // On page load, try autoplay
+    window.addEventListener('load', () => {
+      tryPlayMusic();
+    });
+
+    // Save current time every second
+    setInterval(() => {
+      if (!bgMusic.paused) {
+        localStorage.setItem('musicTime', bgMusic.currentTime);
+      }
+    }, 1000);
+
+    musicToggle.addEventListener('click', () => {
+      if (musicPlaying) {
+        bgMusic.pause();
+        musicPlaying = false;
+      } else {
+        bgMusic.play().then(() => {
+          musicPlaying = true;
+        }).catch(() => {
+          musicPlaying = false;
+        });
+      }
+      updateToggleIcon();
+      localStorage.setItem('musicPlaying', musicPlaying);
+    });
+
+    // Also listen for user interaction anywhere (for autoplay fallback)
+    function userInteract() {
+      if (!musicPlaying) {
+        bgMusic.play().then(() => {
+          musicPlaying = true;
+          updateToggleIcon();
+          localStorage.setItem('musicPlaying', true);
+        }).catch(() => {});
+      }
+      document.removeEventListener('click', userInteract);
+      document.removeEventListener('keydown', userInteract);
+      document.removeEventListener('touchstart', userInteract);
+    }
+    document.addEventListener('click', userInteract);
+    document.addEventListener('keydown', userInteract);
+    document.addEventListener('touchstart', userInteract);
+  </script>
+</body>
+</html>

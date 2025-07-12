@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🐠 Ponyo Pop!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #d0f0ff, #a0e0ff);
+      font-family: 'Quicksand', sans-serif;
+      text-align: center;
+      color: #005f73;
+      padding: 40px;
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5em;
+    }
+    img {
+      width: 250px;
+      margin: 20px;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 1.1em;
+      background-color: #00b4d8;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0096c7;
+    }
+  </style>
+  <style>
+  /* Sparkle and heart container */
+  #magicParticles {
+    pointer-events: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    overflow: visible;
+    z-index: 9999;
+  }
+  .particle {
+    position: absolute;
+    opacity: 0.8;
+    animation-timing-function: linear;
+    user-select: none;
+  }
+  .sparkle {
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, white 40%, transparent 80%);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 2px #fff);
+    animation-name: sparkle-float;
+    animation-duration: 6s;
+  }
+  .heart {
+    width: 16px;
+    height: 16px;
+    background: #ff69b4;
+    clip-path: polygon(
+      50% 0%, 61% 10%, 70% 20%, 80% 35%, 
+      80% 55%, 65% 70%, 50% 80%, 35% 70%, 
+      20% 55%, 20% 35%, 30% 20%, 39% 10%
+    );
+    animation-name: heart-float;
+    animation-duration: 7s;
+  }
+
+  @keyframes sparkle-float {
+    0%   { transform: translateY(0) scale(1); opacity: 0.8; }
+    100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+  }
+  @keyframes heart-float {
+    0%   { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.8; }
+    100% { transform: translateY(-130vh) scale(1.1) rotate(360deg); opacity: 0; }
+  }
+</style>
+
+</head>
+<body>
+  <h1>Ponyo is swimming by with love! 💙</h1>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnRrM3hmMGZpYTlxZGE5czZteW9xazRvYWd2ajdwMmJ1NG03cjh2YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/d7kpFDc1mYqDnD3hh1/giphy.gif" alt="Ponyo">
+  <p>"You’re as sweet and joyful as Ponyo on a jellyfish ride! 
+    </p><p></p>Like Ponyo’s journey to be with those she loves, may your path always lead to where your heart truly belongs."</p>
+  <button onclick="location.href='doraemon.html'">Next 🎒</button>
+<div id="magicParticles"></div>
+
+<script>
+  const container = document.getElementById('magicParticles');
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function createParticle(type) {
+    const el = document.createElement('div');
+    el.classList.add('particle', type);
+    el.style.left = random(0, 100) + 'vw';
+    el.style.top = '110vh';
+    el.style.animationDuration = random(5, 9) + 's';
+    el.style.opacity = random(0.6, 1);
+    container.appendChild(el);
+
+    // Remove particle after animation
+    el.addEventListener('animationend', () => {
+      container.removeChild(el);
+    });
+  }
+
+  // Spawn particles periodically
+  setInterval(() => {
+    createParticle('sparkle');
+    if (Math.random() > 0.5) createParticle('heart');
+  }, 400);
+</script>
+</body>
+</html>

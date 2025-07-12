@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Disney Birthday Start</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Arial', sans-serif;
+      color: white;
+    }
+
+    #startBtn {
+      font-size: 2em;
+      padding: 20px 40px;
+      background: #0057b7;
+      color: #ffd700;
+      border: 4px solid #ffd700;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-bottom: 30px;
+    }
+
+    #startBtn:hover {
+      background: #ffd700;
+      color: #0057b7;
+    }
+
+    #player {
+      display: none;
+      width: 90vw;
+      max-width: 1280px;
+      height: 50.6vw; /* 16:9 ratio */
+      max-height: 720px;
+      border: none;
+    }
+
+    #nextBtn {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.5em;
+      padding: 10px 30px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255,105,180,0.5);
+      transition: background 0.3s ease;
+    }
+
+    #nextBtn:hover {
+      background: #ff85c1;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="startBtn">click to start!</button>
+
+  <iframe id="player"
+    src=""
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+
+  <button id="nextBtn" onclick="location.href='gratitude.html'">next</button>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const player = document.getElementById('player');
+    const nextBtn = document.getElementById('nextBtn');
+
+    startBtn.addEventListener('click', () => {
+      // Set YouTube embed URL with autoplay and unmute
+      const videoId = 'CJWjPz8Sdaw';
+      const autoplayURL = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&rel=0&controls=0&modestbranding=1`;
+
+      player.src = autoplayURL;
+      player.style.display = 'block';
+      startBtn.style.display = 'none';
+      nextBtn.style.display = 'inline-block';
+    });
+  </script>
+</body>
+</html>
