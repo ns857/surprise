@@ -73,29 +73,47 @@
 
   <button id="startBtn">click to start!</button>
 
-  <iframe id="player"
-    src=""
-    allow="autoplay; encrypted-media"
-    allowfullscreen
-    playsinline>
-  </iframe>
+  <div id="player"></div>
 
   <button id="nextBtn" onclick="location.href='gratitude.html'">next</button>
 
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
+    let player;
     const startBtn = document.getElementById('startBtn');
-    const player = document.getElementById('player');
     const nextBtn = document.getElementById('nextBtn');
+    const playerDiv = document.getElementById('player');
+
+    function onYouTubeIframeAPIReady() {
+      // This function will be called when API is ready
+      // We create player after button click instead to control timing
+    }
 
     startBtn.addEventListener('click', () => {
-      const videoId = 'CJWjPz8Sdaw';
-      // mute=1 + playsinline=1 for mobile autoplay support
-      const autoplayURL = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&controls=0&modestbranding=1&playsinline=1`;
-
-      player.src = autoplayURL;
-      player.style.display = 'block';
       startBtn.style.display = 'none';
       nextBtn.style.display = 'inline-block';
+      playerDiv.style.display = 'block';
+
+      player = new YT.Player('player', {
+        height: '360',
+        width: '640',
+        videoId: 'CJWjPz8Sdaw',
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          rel: 0,
+          modestbranding: 1,
+          playsinline: 1,
+          mute: 1  // start muted (needed for mobile autoplay)
+        },
+        events: {
+          onReady: (event) => {
+            event.target.playVideo();
+            // Unmute explicitly on user interaction
+            event.target.unMute();
+          }
+        }
+      });
     });
   </script>
 </body>
