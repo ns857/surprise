@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>🌟 A Special Gratitude & Motivation</title>
-  <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Pacifico&family=Quicksand&display=swap" rel="stylesheet" />
   <style>
     body {
       background: #fffaf0;
@@ -13,46 +15,69 @@
       align-items: center;
       height: 100vh;
       padding: 30px;
-      text-align: center;
       color: #b15989;
       position: relative;
       overflow: hidden;
     }
+
     #letter {
       background: #fdf0f7;
       border-radius: 30px;
-      padding: 40px 50px;
+      padding: 30px 40px;
       max-width: 600px;
+      max-height: 80vh;
       box-shadow: 0 10px 25px rgba(177, 89, 137, 0.3);
-      font-size: 1.6em;
-      line-height: 1.5;
+      font-size: 1.3em;
+      line-height: 1.4;
       color: #8b496b;
       user-select: none;
+      overflow-y: auto;
+      box-sizing: border-box;
+      text-align: center;
     }
+
+    /* Scrollbar styling for letter overflow */
+    #letter::-webkit-scrollbar {
+      width: 8px;
+    }
+    #letter::-webkit-scrollbar-thumb {
+      background: #d95f8f;
+      border-radius: 20px;
+    }
+    #letter::-webkit-scrollbar-track {
+      background: #fdf0f7;
+    }
+
     h1 {
       font-family: 'Pacifico', cursive;
-      font-size: 2.8em;
+      font-size: 2.4em;
       margin-bottom: 0.3em;
       color: #d95f8f;
     }
+
     p {
-      margin-bottom: 1.3em;
+      margin-bottom: 1em;
+      /* smaller bottom margin for longer content */
     }
+
     button {
-      margin-top: 40px;
+      margin-top: 30px;
       background: #ff69b4;
       border: none;
-      padding: 15px 35px;
+      padding: 12px 30px;
       border-radius: 40px;
       color: white;
-      font-size: 1.2em;
+      font-size: 1.1em;
       cursor: pointer;
       box-shadow: 0 6px 12px rgba(255, 105, 180, 0.5);
       transition: background-color 0.3s ease;
+      user-select: none;
     }
+
     button:hover {
       background: #d9417b;
     }
+
     /* Magic particles */
     #magicParticles {
       pointer-events: none;
@@ -61,12 +86,14 @@
       overflow: visible;
       z-index: 9999;
     }
+
     .particle {
       position: absolute;
       opacity: 0.8;
       animation-timing-function: linear;
       user-select: none;
     }
+
     .sparkle {
       width: 12px;
       height: 12px;
@@ -76,6 +103,7 @@
       animation-name: sparkle-float;
       animation-duration: 6s;
     }
+
     .heart {
       width: 16px;
       height: 16px;
@@ -88,14 +116,17 @@
       animation-name: heart-float;
       animation-duration: 7s;
     }
+
     @keyframes sparkle-float {
       0%   { transform: translateY(0) scale(1); opacity: 0.8; }
       100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
     }
+
     @keyframes heart-float {
       0%   { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.8; }
       100% { transform: translateY(-130vh) scale(1.1) rotate(360deg); opacity: 0; }
     }
+
     /* Music toggle button */
     #musicToggle {
       position: fixed;
@@ -119,17 +150,34 @@
     #musicToggle:hover {
       background: rgba(255, 255, 255, 1);
     }
+
+    /* Responsive smaller screens */
+    @media (max-width: 640px) {
+      #letter {
+        max-width: 90vw;
+        max-height: 75vh;
+        padding: 25px 20px;
+        font-size: 1.1em;
+      }
+      h1 {
+        font-size: 2em;
+      }
+      button {
+        padding: 10px 25px;
+        font-size: 1em;
+      }
+    }
   </style>
 </head>
 <body>
-  <div id="letter">
+  <div id="letter" tabindex="0">
     <h1>Dear Bestfriend,</h1>
-<p>Happy Birthday! I hope today reminds you of how much light you bring into the lives around you — not in loud ways, but in quiet strength, steady kindness, and genuine presence.</p>
+    <p>Happy Birthday! I hope today reminds you of how much light you bring into the lives around you — not in loud ways, but in quiet strength, steady kindness, and genuine presence.</p>
 
-<p>Like Totoro in the trees or Ponyo on the waves, you move through the world with a kind of quiet magic — honest, curious, and full of heart. You've handled so much with grace, and I admire that more than words can say.</p>
+    <p>Like Totoro in the trees or Ponyo on the waves, you move through the world with a kind of quiet magic — honest, curious, and full of heart. You've handled so much with grace, and I admire that more than words can say.</p>
 
-<p>This year, I hope you keep choosing what feels true. Keep growing at your own pace, resting when you need, and trusting the path ahead — even when it’s unclear.  
-I’m lucky to walk alongside you in this life. Here’s to the simple joys, the deep breaths, and the moments that feel like home. 🌿🌊</p>
+    <p>This year, I hope you keep choosing what feels true. Keep growing at your own pace, resting when you need, and trusting the path ahead — even when it’s unclear.  
+    I’m lucky to walk alongside you in this life. Here’s to the simple joys, the deep breaths, and the moments that feel like home. 🌿🌊</p>
 
     <button onclick="location.href='totoro.html'">next 🌟</button>
   </div>
